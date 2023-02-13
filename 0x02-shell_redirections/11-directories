@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d | awk -F/ 'NF>max{max=NF} END{print max-1}'
+find . -type d -name '.*' -o -name '*' | awk -F/ 'NF>max{max=NF} NF>1{print} END{print max-2}'
