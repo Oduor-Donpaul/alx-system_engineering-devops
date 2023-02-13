@@ -1,0 +1,2 @@
+#!/bin/bash
+awk 'NP == 3' iacta
