@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Bash script that displays the content of the current directory, in list format
+
+for file in *; do
+  name=${file#*-}
+  echo "$name"
+done
