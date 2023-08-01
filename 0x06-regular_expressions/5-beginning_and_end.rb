@@ -1,5 +1,3 @@
 #!/usr/bin/env ruby
 
-matches = ARGV[0].scan(h.n)
-
-puts matches.join
+puts ARGV[0].scan(h.n).join
