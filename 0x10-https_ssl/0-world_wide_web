@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Get the info of a given subdomain and domain 
+subdomaines=("www" "lb-01" "web-01" "web-02")
+
+info () {
+	subdomain="$1"
+	domaine_name="$2"
+
+	dig "$subdomain.$domaine_name" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v sd="$subdomain" 'BEGIN { FS = " " } ; { print "The subdomain " sd " is a " $4 " record and points to " $5 }'
+}
+
+if [ $# -eq 1 ];
+then
+	domaine_name="$1"
+	for sd in "${subdomaines[@]}"
+	do
+		info "$sd" "$domaine_name"
+	done
+elif [ "$#" -eq 2 ];
+then
+	domaine_name="$1"
+	subdomain="$2"
+	info "$subdomain" "$domaine_name"
+fi
